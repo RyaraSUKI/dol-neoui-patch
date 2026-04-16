@@ -11,4 +11,8 @@
 
 为自用分享，欢迎提出issue或新想法！
 
+## PREVIEW
+<img src="preview.gif" alt="preview" width="auto" height="auto">
+
+---
 > 依雅莱的布丁
