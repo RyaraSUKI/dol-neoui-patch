@@ -1,0 +1,412 @@
+:root {
+    /* 移除移动浏览器默认点击高亮 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* sugarcube和原生组件替换部分，感谢诺尔老师、梦见老师的css界面设计！ */
+/*Body*/
+
+/*原生按钮 和 link链接*/
+button {
+    border: none;
+    border-radius: 1em;
+    outline: none;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:disabled {
+    opacity: 0.7;
+}
+
+a {
+    font-weight: bold;
+    /* 去除passage内文本下划线 */
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.05);
+}
+
+/* story和passage */
+#story {
+    /* 确保passage内容被uibar展开时遮挡，覆盖引擎内置的宽屏对齐方式 */
+    margin-left: 3.5em;
+    /* passage部分收展时动画 */
+    transition: margin-left 600ms cubic-bezier(0.7, -1, 0.3, 2);
+}
+
+.passage caption,
+.passage td,
+.passage th,
+.passage tr {
+    border: 1px solid;
+}
+
+/* passage内链接 */
+.passage a.link-internal {
+    font-weight: bold;
+    /* 去除passage内文本下划线 */
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.passage a.link-internal:hover {
+    transform: scale(1.05);
+}
+
+/*原生组件*/
+input,
+select,
+textarea {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+input:not(:disabled):focus,
+select:not(:disabled):focus,
+textarea:not(:disabled):focus,
+input:not(:disabled):hover,
+select:not(:disabled):hover,
+textarea:not(:disabled):hover {
+    transform: scale(1.1);
+}
+
+/* 表格 */
+label {
+    font-weight: bold;
+}
+
+hr {
+    margin: 0.1em auto;
+}
+
+/* 基础滚动条样式  */
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+
+/* 滚动条轨道 */
+*::-webkit-scrollbar-track {
+    border-radius: 8px;
+}
+
+/* 滚动条滑块 */
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: none;
+}
+
+/* 滚动条滑块 hover 状态 */
+*::-webkit-scrollbar-thumb:hover {
+}
+
+/* 选择文本高亮 */
+*::selection {
+    background: rgba(255, 224, 212, 0.3);
+}
+
+/* 输入框placeholder */
+*::placeholder {
+    opacity: 0.7;
+}
+
+/*UI 侧边栏*/
+#ui-bar {
+    border: 3px solid;
+    /* 收展时小动画 */
+    transition:
+        all 600ms cubic-bezier(0.7, -1, 0.3, 2);
+    border-radius: 1em;
+}
+
+/* #ui-bar.stowed #ui-bar-body,
+#ui-bar.stowed #ui-bar-history {
+    /* 收起时渐隐侧边栏内容 
+  animation: sidebarFadeOut 650ms ease 600ms forwards;
+}
+
+
+#ui-bar #ui-bar-body,
+#ui-bar #ui-bar-history {
+    /* 展开时渐显侧边栏内容
+  animation: sidebarFadeIn 650ms ease 600ms forwards;
+}
+*/
+
+#ui-bar.stowed > #ui-bar-body > #story-caption > #mobileStats {
+    transition: ease-in 0s 0.61s;
+}
+
+/* 侧边栏元素渐显动画关键帧 
+@keyframes sidebarFadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* 侧边栏元素渐隐动画关键帧 
+@keyframes sidebarFadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+  }
+}
+*/
+
+#ui-bar-body {
+    overflow: auto;
+    margin: 1.8rem auto;
+    scrollbar-width: none;
+}
+
+#ui-bar-tray button::before {
+    font-size: 1.2em;
+}
+
+#ui-bar-tray button {
+    border: none;
+    margin: 0.2em;
+    padding: 0.4rem;
+}
+
+#ui-bar-tray button:hover {
+    border-color: none;
+}
+
+#ui-bar-toggle {
+    border-radius: 8px;
+}
+
+#ui-bar-toggle:hover {
+}
+
+/*#ui-bar-toggle::before {
+    content: "\f0d9";
+}
+
+#ui-bar.stowed #ui-bar-toggle::before {
+    content: "\f0c9";
+}
+*/
+
+#ui-bar-history [id|="history"]:disabled {
+    border-radius: 8px;
+}
+
+#ui-bar-history [id|="history"]:hover {
+    border-color: none;
+    border-radius: 8px;
+}
+
+/*.uibartext {
+    display: flex;
+    border: 2px solid;
+    border-radius: 0.3em;
+    width: 1.7rem;
+    height: auto;
+    margin: 0.2em auto;
+    font-size: 20px;
+    font-weight: 900;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.2rem;
+    padding: 0.5rem 0;
+}
+
+.statetext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 0.3em;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: 0.2em auto;
+    font-size: 20px;
+    font-weight: 900;
+}
+*/
+/* 侧边按钮整体 */
+#menu ul {
+    padding: 0px;
+    list-style: none;
+    border: transparent;
+}
+
+#menu ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menu-story li:first-child {
+    width: 100%;
+}
+
+#menu-story li:last-child {
+    width: 100%;
+}
+
+#menu-story li:nth-last-child(2) {
+    width: 100%;
+}
+
+#menu-story li {
+    margin: 0;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+#menu-core li {
+    width: 100%;
+}
+
+#menu ul {
+    border-radius: 5px;
+    list-style: none;
+}
+
+#menu li {
+    border: none;
+    border-radius: 5px;
+}
+
+#menu li a {
+    display: block;
+    border-radius: 5px;
+    height: auto;
+    line-height: 1.5;
+    transition: transform 0.3s ease;
+    text-transform: uppercase;
+}
+
+#menu li a:hover {
+    border-radius: 5px;
+    height: auto;
+    transform: scale(1.1);
+}
+
+/*UI 弹窗
+#ui-overlay {
+    backdrop-filter: blur(4px);
+    /* 添加模糊效果 
+    -webkit-backdrop-filter: blur(4px);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100000;
+    position: fixed;
+    top: -50vh;
+    left: -50vw;
+    height: 200vh;
+    width: 200vw;
+}
+
+#ui-overlay.open {
+    visibility: visible;
+    display: block;
+    transition: opacity 200ms ease-in;
+    opacity: 1;
+}
+
+#ui-overlay:not(.open) {
+    transition: visibility 200ms step-end, opacity 200ms ease-in;
+}
+
+#ui-dialog {
+    overflow: auto;
+    min-width: 35rem;
+    max-width: 50%;
+    max-height: calc(100% - 7rem);
+    z-index: 100100;
+    position: fixed;
+    top: 5rem;
+    scrollbar-width: none;
+    scrollbar-heigth: none;
+}
+
+#ui-dialog>* {
+    box-sizing: border-box;
+}
+
+#ui-dialog-titlebar {
+    min-width: 100%;
+    max-width: 100%;
+    position: relative;
+    border: 3px solid;
+    border-radius: .5em;
+    margin: 20px auto;
+}
+
+#ui-dialog-title {
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#ui-dialog-close {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 120%;
+    margin: 0;
+    padding: 0;
+    width: 3.6em;
+    height: 100%;
+    background-color: transparent;
+    border: transparent;
+    transition-duration: 200ms;
+}
+
+#ui-dialog-close:hover {
+    background-color: transparent;
+    border: transparent;
+    box-shadow: none;
+}
+
+#ui-dialog-body {
+    height: calc(100% - 3rem);
+    border: 3px solid;
+    text-align: left;
+    line-height: 1.5;
+    padding: 20px;
+    border-radius: 1em;
+}
+
+#ui-dialog-body>*:first-child {
+    margin-top: 0;
+} 
+
+*/
+
+/* 报错块 
+.error-view {
+    border-left: .5em solid;
+    display: inline-block;
+    margin: .1em;
+    max-width: 100%;
+    padding: 0 .25em;
+    position: relative;
+}*/
